@@ -5,5 +5,9 @@ export default {
     newBody: event.target.value,
     type: 'NOTE_BODY_CHANGED'
   }),
-  changeNoteTitle: () => ({type: 'NOTE_TITLE_CHANGED'}),
+  changeNoteTitle: (id, event) => ({
+    id: id,
+    newTitle: event.target.value,
+    type: 'NOTE_TITLE_CHANGED'
+  })
 };

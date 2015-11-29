@@ -10,13 +10,13 @@ class App extends React.Component {
   render() {
     let notes = this.props.notes
     let actions = this.props.actions
-    let selected = this.props.selected
+    let selected = this.props.selected || notes[0]
 
     return (
       <main className="app">
         <ActionBar />
         <NoteList notes={ notes } actions={ actions } selected={ selected } />
-        <NoteView note={ selected || notes[0] } actions={ actions } />
+        <NoteView note={ selected } actions={ actions } />
       </main>
     );
   }
