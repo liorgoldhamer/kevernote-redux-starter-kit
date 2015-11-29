@@ -8,13 +8,15 @@ import NoteView from './NoteView'
 
 class App extends React.Component {
   render() {
+    let notes = this.props.notes
+    let actions = this.props.actions
+    let selected = this.props.selected
+
     return (
       <main className="app">
         <ActionBar />
-        <NoteList notes={ this.props.notes }
-                  actions={ this.props.actions }
-                  selected={ this.props.selected } />
-                <NoteView selected={ this.props.selected } />
+        <NoteList notes={ notes } actions={ actions } selected={ selected } />
+        <NoteView note={ selected || notes[0] } actions={ actions } />
       </main>
     );
   }
