@@ -14,7 +14,7 @@ class App extends React.Component {
 
     return (
       <main className="app">
-        <ActionBar />
+        <ActionBar newNoteHandler={ actions.addNewNote }/>
         <NoteList notes={ notes } actions={ actions } selected={ selected } />
         <NoteView note={ selected } actions={ actions } />
       </main>

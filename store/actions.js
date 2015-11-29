@@ -1,4 +1,5 @@
 export default {
+  addNewNote: () => ({type: 'NEW_NOTE_ADDED'}),
   selectNote: (id) => ({type: 'NOTE_SELECTED', id: id}),
   changeNoteBody: (id, event) => ({
     id: id,
@@ -10,4 +11,4 @@ export default {
     newTitle: event.target.value,
     type: 'NOTE_TITLE_CHANGED'
   })
-};
+}
