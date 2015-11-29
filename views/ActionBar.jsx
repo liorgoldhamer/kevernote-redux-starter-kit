@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import actions from '../store/actions';
 import { bindActionCreators } from 'redux'
 
-class ActionBar extends React.Component {
+export default class ActionBar extends React.Component {
 
   render() {
     return (
@@ -14,8 +14,3 @@ class ActionBar extends React.Component {
     );
   }
 }
-
-export default connect(
-  state => ({data: state}),
-  dispatch => ({actions: bindActionCreators(actions, dispatch)})
-)(ActionBar);

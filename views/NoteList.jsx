@@ -4,28 +4,29 @@ import actions from '../store/actions';
 import { bindActionCreators } from 'redux'
 import NotePreview from './NotePreview'
 
-class NoteList extends React.Component {
+export default class NoteList extends React.Component {
 
   render() {
-    console.log('NoteList', this)
+    let selected = this.props.selected
 
     return (
       <aside className="note-list">
         <h2 className="note-list__title">Notes</h2>
         <div className="note-list__summary">
-          <span>9</span>
+          <span>{ this.props.notes.length }</span>
           <span> </span>
-          <span>notes</span>
+          <span>{ this.props.notes.length === 1 ? 'note' : 'notes' }</span>
         </div>
         <ul className="note-list__container">
-          { this.props.data.notes.map( note => <NotePreview note={ note } />) }
+          {
+            this.props.notes.map( note =>
+              <NotePreview note={ note }
+                           selectNote={ this.props.actions.selectNote }
+                           isSelected={ selected ? selected.id === note.id : false } />
+            )
+          }
         </ul>
       </aside>
     );
   }
 }
-
-export default connect(
-  state => ({data: state}),
-  dispatch => ({actions: bindActionCreators(actions, dispatch)})
-)(NoteList);

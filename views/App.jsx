@@ -11,14 +11,16 @@ class App extends React.Component {
     return (
       <main className="app">
         <ActionBar />
-        <NoteList />
-        <NoteView />
+        <NoteList notes={ this.props.notes }
+                  actions={ this.props.actions }
+                  selected={ this.props.selected } />
+                <NoteView selected={ this.props.selected } />
       </main>
     );
   }
 }
 
 export default connect(
-  state => ({data: state}),
+  state => state,
   dispatch => ({actions: bindActionCreators(actions, dispatch)})
 )(App);

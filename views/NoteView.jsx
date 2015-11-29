@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import actions from '../store/actions';
 import { bindActionCreators } from 'redux'
 
-class NoteView extends React.Component {
+export default class NoteView extends React.Component {
 
   render() {
     return (
@@ -18,8 +18,3 @@ class NoteView extends React.Component {
     );
   }
 }
-
-export default connect(
-  state => ({data: state}),
-  dispatch => ({actions: bindActionCreators(actions, dispatch)})
-)(NoteView);

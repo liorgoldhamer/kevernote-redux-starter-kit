@@ -7,9 +7,14 @@ import _ from './lib/date_extensions'
 export default class NotePreview extends React.Component {
 
   render() {
+
     let note = this.props.note
+
+    let previewClass = 'note-preview'
+    previewClass += this.props.isSelected ? ' is-selected' : ''
+
     return (
-      <li className="note-preview">
+      <li className={ previewClass } onClick={ () => this.props.selectNote(note.id) }>
         <a href={ "#notes/" + note.id } className="note-preview__link">
           <span className="note-preview__time">{ (new Date(note.created_at)).toRelativeTime() }</span>
           <h2 className="note-preview__title">{ note.title }</h2>

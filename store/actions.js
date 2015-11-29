@@ -1,3 +1,3 @@
 export default {
-  // define some actions here maybe!
+  selectNote: (id) => ({type: 'NOTE_SELECTED', id: id})
 };
