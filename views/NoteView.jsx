@@ -17,10 +17,10 @@ export default class NoteView extends React.Component {
         </nav>
         <input className="note-view__title"
                value={ note.title }
-               onChange={ (e) => actions.changeNoteTitle(note.id, e) } />
+               onChange={ (e) => actions.changeNoteTitle({id: note.id, event: e}) } />
         <textarea className="note-view__body"
                   value={ note.body }
-                  onChange={ (e) => actions.changeNoteBody(note.id, e) }></textarea>
+                  onChange={ (e) => actions.changeNoteBody({id: note.id, event: e}) }></textarea>
       </article>
     );
   }

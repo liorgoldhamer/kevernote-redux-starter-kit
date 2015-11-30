@@ -1,14 +1,36 @@
-export default {
-  addNewNote: () => ({type: 'NEW_NOTE_ADDED'}),
-  selectNote: (id) => ({type: 'NOTE_SELECTED', id: id}),
-  changeNoteBody: (id, event) => ({
-    id: id,
-    newBody: event.target.value,
+import { request, asyncAction } from './helpers/async';
+
+let addNewNote = asyncAction((dispatch) => {
+  dispatch({type: 'NEW_NOTE_ADDED'});
+  // request('post', '/inc');
+})
+
+let changeNoteBody = asyncAction((dispatch, state, actionParams) => {
+  dispatch({
+    id: actionParams.id,
+    newBody: actionParams.event.target.value,
     type: 'NOTE_BODY_CHANGED'
-  }),
-  changeNoteTitle: (id, event) => ({
-    id: id,
-    newTitle: event.target.value,
+  })
+  // request('post', '/inc');
+})
+
+let changeNoteTitle = asyncAction((dispatch, state, actionParams) => {
+  dispatch({
+    id: actionParams.id,
+    newTitle: actionParams.event.target.value,
     type: 'NOTE_TITLE_CHANGED'
   })
+  // request('post', '/dec');
+})
+
+let selectNote = asyncAction((dispatch, state, id) => {
+  dispatch({type: 'NOTE_SELECTED', id: id})
+  // request('post', '/dec');
+})
+
+export default {
+  addNewNote: addNewNote,
+  changeNoteBody: changeNoteBody,
+  changeNoteTitle: changeNoteTitle,
+  selectNote: selectNote
 }
