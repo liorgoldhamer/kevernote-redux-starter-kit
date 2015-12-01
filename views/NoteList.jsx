@@ -8,7 +8,6 @@ export default class NoteList extends React.Component {
 
   render() {
     let selected = this.props.selected
-
     return (
       <aside className="note-list">
         <h2 className="note-list__title">Notes</h2>

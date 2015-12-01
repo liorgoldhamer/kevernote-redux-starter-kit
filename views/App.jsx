@@ -7,14 +7,23 @@ import NoteList from './NoteList'
 import NoteView from './NoteView'
 
 class App extends React.Component {
+  selectedNote() {
+    if (this.props.selected === undefined)
+    {
+      return (this.props.notes ? this.props.notes[0] : undefined)
+    }
+    return this.props.selected
+  }
+
   render() {
     return (
       <main className="app">
-        <ActionBar />
+        <ActionBar actions= { this.props.actions }/>
         <NoteList notes={ this.props.notes }
                   actions={ this.props.actions }
-                  selected={ this.props.selected } />
-                <NoteView selected={ this.props.selected } />
+                  selected={ this.selectedNote() } />
+                <NoteView selected={ this.selectedNote() }
+                          actions= { this.props.actions } />
       </main>
     );
   }
