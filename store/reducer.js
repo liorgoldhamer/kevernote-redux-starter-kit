@@ -1,15 +1,5 @@
 import { request } from '../store/helpers/async';
 
-function noteAddedSuccessfully(response) {
-  console.log('response',response)
-  // return response
-}
-
-function noteAddingError(response) {
-  console.log('response',response)
-  // return response
-}
-
 export default function reducer(state, action) {
   switch (action.type) {
   case 'NOTE_SELECTED':
@@ -22,19 +12,13 @@ export default function reducer(state, action) {
     selected = {...edited}
     return {...state, selected: selected}
   case 'ADD_NOTE':
-    let id = state.notes ? state.notes[0].id + 1 : 1
-    let newNote = {
-              id: id,
-              title: "New note",
-               body: "Write your comment here",
-               format: "txt",
-               status: 'Saving...',
-               createdAt: new Date(Date.now()),
-               updatedAt: new Date(Date.now())}
-    state.notes.unshift(newNote)
-
-    request('POST', '/api/notes', newNote, {noteAddedSuccessfully, noteAddingError})
-    return {...state, selected: newNote}
+    action.note.status = 'Saving...'
+    state.notes.unshift(action.note)
+    return {...state, selected: action.note}
+  case 'NOTE_SAVED':
+    let note = state.notes.filter(note => note.id === action.id)[0]
+    note.status = 'Saved'
+    return {...state}
   default:
     return state
   }

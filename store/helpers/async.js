@@ -6,6 +6,7 @@ function checkStatus(response) {
 }
 
 export function request(method, endpoint, body, {success, error} = {null, null}) {
+  console.log('success', success)
   return fetch(endpoint, {
     method: method,
     headers: {

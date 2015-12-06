@@ -16,9 +16,11 @@ class App extends React.Component {
   }
 
   render() {
+    // console.log('App', this)
     return (
       <main className="app">
-        <ActionBar actions= { this.props.actions }/>
+        <ActionBar actions= { this.props.actions }
+                    notes= { this.props.notes }/>
         <NoteList notes={ this.props.notes }
                   actions={ this.props.actions }
                   selected={ this.selectedNote() } />

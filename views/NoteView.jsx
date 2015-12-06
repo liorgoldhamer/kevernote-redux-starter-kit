@@ -7,7 +7,6 @@ export default class NoteView extends React.Component {
 
   render() {
     let note = this.props.selected
-    console.log('note', note)
     return (
       <article className="note-view">
         <nav className="note-view__actions">
